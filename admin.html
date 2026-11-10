@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta 18 · Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+  <!-- Acceso (RF-08) -->
+  <section id="login" class="login">
+    <form id="form-login" class="login-caja" novalidate>
+      <img src="img/logo.png" alt="Logo Ruta 18 And Chips" class="login-logo">
+      <a href="index.html" class="logo oscuro">RUTA <span>18</span></a>
+      <h2>Panel de administración</h2>
+      <label class="campo">Usuario<input id="usuario" required autofocus autocomplete="username"></label>
+      <label class="campo">Contraseña<input type="password" id="clave" required autocomplete="current-password"></label>
+      <button class="btn" type="submit">Ingresar</button>
+      <a href="index.html" class="volver">← Volver a la página principal</a>
+    </form>
+  </section>
+
+  <!-- Panel -->
+  <div id="panel" class="panel" hidden>
+    <aside class="menu">
+      <a href="index.html" class="logo"><img src="img/logo.png" alt="" class="logo-img"> RUTA <span>18</span></a>
+      <nav class="menu-secciones">
+        <button data-sec="mesas" class="activo">Mesas</button>
+        <button data-sec="horarios">Horarios</button>
+        <button data-sec="reservas">Reservas</button>
+        <button data-sec="carta">Carta</button>
+      </nav>
+      <div class="menu-pie">
+        <a href="index.html" class="menu-link" title="Ver página principal">🏠 <span>Ver página principal</span></a>
+        <button id="salir" title="Cerrar sesión">↩ <span>Cerrar sesión</span></button>
+      </div>
+    </aside>
+
+    <main class="panel-contenido">
+      <!-- Mesas (RF-09, RF-10, RF-13) -->
+      <section id="sec-mesas" class="seccion">
+        <div class="titulo-sec"><h2>Mesas</h2><button class="btn" id="nueva-mesa">+ Nueva mesa</button></div>
+        <form id="form-mesa" class="form-admin" hidden novalidate>
+          <input type="hidden" id="mesa-id">
+          <label class="campo">Nombre *<input id="mesa-nombre" required></label>
+          <label class="campo">Zona *
+            <select id="mesa-zona"><option value="salon">Salón</option><option value="terraza">Terraza</option></select>
+          </label>
+          <label class="campo">Capacidad *<input type="number" id="mesa-capacidad" min="1" max="20" required></label>
+          <label class="campo">Foto (URL, opcional)<input type="url" id="mesa-foto"></label>
+          <div class="acciones"><button class="btn" type="submit">Guardar</button><button type="button" class="btn sec" id="cancelar-mesa">Cancelar</button></div>
+        </form>
+        <ul id="lista-mesas-admin" class="lista"></ul>
+      </section>
+
+      <!-- Horarios (RF-11) -->
+      <section id="sec-horarios" class="seccion" hidden>
+        <h2>Horarios de atención</h2>
+        <ul id="lista-horarios" class="lista"></ul>
+        <button class="btn" id="guardar-horarios">Guardar horarios</button>
+              </section>
+
+      <!-- Reservas (RF-12) -->
+      <section id="sec-reservas" class="seccion" hidden>
+        <h2>Reservas</h2>
+        <div class="filtros">
+          <label>Fecha <input type="date" id="filtro-fecha"></label>
+          <label>Mesa <select id="filtro-mesa"></select></label>
+          <button class="btn sec" id="limpiar-filtros">Limpiar</button>
+        </div>
+        <ul id="lista-reservas" class="lista"></ul>
+      </section>
+
+      <!-- Carta (RF-14) -->
+      <section id="sec-carta" class="seccion" hidden>
+        <div class="titulo-sec"><h2>Carta</h2><button class="btn" id="nuevo-plato">+ Nuevo plato</button></div>
+        <form id="form-plato" class="form-admin" hidden novalidate>
+          <input type="hidden" id="plato-id">
+          <label class="campo">Nombre *<input id="plato-nombre" required></label>
+          <label class="campo">Categoría *
+            <select id="plato-categoria">
+              <option value="hamburguesas">Hamburguesas</option><option value="sushi">Sushi</option>
+              <option value="platos">Platos a la carta</option><option value="bebidas">Bebidas</option>
+            </select>
+          </label>
+          <label class="campo">Precio (COP) *<input type="number" id="plato-precio" min="0" step="100" required></label>
+          <label class="campo">Descripción<input id="plato-descripcion"></label>
+          <label class="campo">Foto del producto
+            <input type="file" id="plato-archivo" accept="image/*">
+          </label>
+          <div class="campo vista-previa">
+            <img id="plato-preview" alt="" hidden>
+            <button type="button" class="mini rojo" id="quitar-foto" hidden>Quitar foto</button>
+          </div>
+          <input type="hidden" id="plato-imagen">
+          <label class="check-campo"><input type="checkbox" id="plato-disponible" checked> Disponible</label>
+          <label class="check-campo"><input type="checkbox" id="plato-destacado"> Destacado en el inicio</label>
+          <div class="acciones"><button class="btn" type="submit">Guardar</button><button type="button" class="btn sec" id="cancelar-plato">Cancelar</button></div>
+        </form>
+        <ul id="lista-platos" class="lista"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

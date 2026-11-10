@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta 18 · Reservas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Encabezado -->
+  <header class="header">
+    <a href="#inicio" class="logo"><img src="img/logo.png" alt="Logo Ruta 18 And Chips" class="logo-img"> RUTA <span>18</span></a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#mesas">Mesas</a>
+      <a href="#destacados">Destacados</a>
+      <a href="#carta">Carta</a>
+      <a href="#mesas">Reservar</a>
+      <a href="#contacto">Contacto</a>
+      <a href="admin.html" class="btn-admin" title="Panel de administración">Admin</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <img src="img/logo.png" alt="" class="hero-logo">
+    <h1>Ruta 18</h1>
+    <p>Hamburguesas · Sushi · Platos a la carta</p>
+    <a href="#mesas" class="btn">Reserva tu mesa</a>
+  </section>
+
+  <!-- Productos destacados -->
+  <section class="destacados" id="destacados">
+    <div class="destacados-cabecera">
+      <span class="sobretitulo">Lo más pedido</span>
+      <h2>Productos destacados</h2>
+      <p class="muted">Los favoritos de nuestros clientes, recién salidos de la cocina.</p>
+    </div>
+    <div id="lista-destacados" class="grid-destacados"></div>
+  </section>
+
+  <main class="contenedor">
+    <!-- Mesas (RF-01, RF-02) -->
+    <section id="mesas">
+      <h2>Nuestras mesas</h2>
+      <div class="filtros">
+        <label>Fecha <input type="date" id="fecha-general"></label>
+        <span id="resumen-mesas" class="muted"></span>
+      </div>
+      <ul id="lista-mesas" class="lista"></ul>
+    </section>
+
+    <!-- Carta (RF-07) -->
+    <section id="carta">
+      <h2>Carta</h2>
+      <div id="lista-carta"></div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer" id="contacto">
+    <p><strong>Ruta 18</strong> · Cra. 18 #11-34, Bucaramanga, Santander</p>
+    <p>WhatsApp / Tel: 313 491 4296 · Hamburguesas, sushi y platos a la carta</p>
+  </footer>
+
+  <!-- Modal de reserva (RF-03 a RF-06) -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-caja">
+      <button class="cerrar" id="cerrar-modal" aria-label="Cerrar">×</button>
+      <div id="modal-contenido"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/cliente.js"></script>
+</body>
+</html>
